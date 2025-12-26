@@ -1,12 +1,34 @@
 # NVidia AI Denoiser command line tool
 
-This is a simple implementation of NVidia AI denoiser. You can find a pre-built windows distribution either on my website [here](https://declanrussell.com/portfolio/nvidia-ai-denoiser/) or in the releases tab of this repro. To build you will need to install the CUDA took availible from [here](https://developer.nvidia.com/cuda-downloads) and the OptiX 7/8 SDK availible [here](https://developer.nvidia.com/designworks/optix/download).
+This is a simple implementation of NVidia AI denoiser.
 
-**You will require an Nvidia driver of at least 465.84 or higher and an Nvidia GPU of Maxwell architecture or newer to use the OptiX denoiser.**
+## Download
 
-## Building on Ubuntu/Debian
-You need to set the `OPTIX80_PATH` environment variable, which is your OptiX SDK Path(eg /home/rabbit/NVIDIA-OptiX-SDK-8.0.0-linux64-x86_64).
+**[Download Denoiser v3.1 for Windows](https://github.com/andre-wstudio/NvidiaAIDenoiser/releases/download/v3.1/Denoiser_v3.1_Windows.zip)** (OptiX 8.1, compatible with NVIDIA driver R590+)
+
+See all releases [here](https://github.com/andre-wstudio/NvidiaAIDenoiser/releases).
+
+## Requirements
+
+- **NVIDIA GPU**: Maxwell architecture or newer
+- **NVIDIA Driver**: 465.84 or higher (v3.1 supports R590+ drivers)
+
+## Building from Source
+
+To build you will need the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads) and [OptiX 8.x SDK](https://developer.nvidia.com/designworks/optix/download).
+
+### Windows (CMake)
 ```
+mkdir build && cd build
+cmake ..
+cmake --build . --config Release
+```
+The executable and DLLs will be in `build/Release/`.
+
+### Ubuntu/Debian (CMake)
+Set the `OPTIX80_PATH` environment variable to your OptiX SDK path.
+```
+export OPTIX80_PATH=/path/to/NVIDIA-OptiX-SDK-8.x.x-linux64
 sudo apt install -y openimageio-tools
 mkdir build && cd build
 cmake ..
